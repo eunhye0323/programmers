@@ -11,12 +11,8 @@ int cal_sco(int a, int b){
     return temp;
 }
 int solution(vector<int> scoville, int K) {
-    priority_queue<int, vector<int>, greater<>>sco;
+    priority_queue<int, vector<int>, greater<>>sco(scoville.begin(), scoville.end());
     int answer = 0;
-    
-    for(auto n : scoville){
-        sco.push(n);
-    }
     
     int count = 0;
     //pq가 비어있지 않고 가장 작은 값이 K보다 작은지
