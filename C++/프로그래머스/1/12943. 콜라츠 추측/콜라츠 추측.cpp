@@ -4,24 +4,33 @@
 
 using namespace std;
 
-int solution(int num) {
-    long long answer = 0;
-    long long temp = num;
+long long temp;
+
+int collatz(long long n, int cnt){
+    if(n == 1){
+        return cnt;
+    }
     
-    while(temp != 1){
-        if(answer == 500){
-            answer = -1;
-            break;
-        }
-        
-        else if(temp % 2 == 0){
-            temp = temp/2;
-        }
-        else if(temp % 2 != 0){
-            temp = temp*3+1;
-        }
-        //cout << temp << " ";
-        answer++;
-    }    
+    else if(cnt == 500){
+        return -1;
+    }
+
+    else if(temp % 2 == 0){
+        temp = temp/2;
+    }
+    
+    else if(temp % 2 != 0){
+        temp = temp*3+1;
+    }
+    
+    //cout << temp << " ";
+    cnt++;
+    return collatz(temp, cnt);
+}
+
+int solution(int num) {
+    int answer = 0;
+    temp = num;    
+    answer = collatz(temp, answer);
     return answer;
 }
